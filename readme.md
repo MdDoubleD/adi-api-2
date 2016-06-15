@@ -1,3 +1,11 @@
+#Instructions
+
+1. clone this app
+2. run `npm install`
+3. change mongo uri to your own
+
+
+
 #How to build and deploy a node API quick
 
 * mkdir adi-api-2
