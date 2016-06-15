@@ -7,5 +7,6 @@ console.log("user routes")
 
 router.route('/')
 	.get(usersController.getIndex)
+	.post(usersController.postUser)
 
 module.exports = router

@@ -118,6 +118,45 @@ module.exports = router
 ```
 
 
+* Make a new user:
+
+```javascript
+
+// in users.js (controller)
+
+//POST users (user create)
+function postUser(req,res){
+	var user = new User
+	
+	console.log(req.body);
+	user.firstName = req.body.firstName
+	user.lastName = req.body.lastName
+	user.email = req.body.email
+	user.avatar_url = req.body.avatar_url
+	user.save(function(error){
+		if (error) console.log("couldn't save user")
+	})
+	res.json({message: "successfully created", success: true})
+
+}
+
+```
+
+add route:
+
+```javascript
+
+// in userRoutes.js
+
+router.route('/')
+	.get(usersController.getIndex)
+	.post(usersController.postUser)
+
+```
+
+
+
+
 
 
 
