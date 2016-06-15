@@ -1,0 +1,18 @@
+{
+  "name": "adi-api-2",
+  "version": "1.0.0",
+  "description": "* mkdir adi-api-2 * cd adi-api-2/ * touch readme.md * touch .gitignore -> add node_modules * touch index.js * open . * git init * git add -A * git commit -m \"initial\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.5.0",
+    "morgan": "^1.7.0"
+  }
+}

@@ -6,5 +6,11 @@
 * touch .gitignore -> add node_modules
 * touch index.js
 * open .
+* git init
+* git add -A
+* git commit -m "initial"
+* npm init
+* npm install body-parser express mongoose morgan --save
+
 
 
