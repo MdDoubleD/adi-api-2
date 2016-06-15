@@ -273,6 +273,20 @@ module.exports = router
 
 ```
 
+##Deploy to heroku
+
+1. heroku create appname
+2. add a start script to package.json:
+
+```
+"scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+```
+3. add, commit, git push heroku master
+4. heroku open
+
 
 
 
