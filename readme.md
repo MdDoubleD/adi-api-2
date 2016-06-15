@@ -156,6 +156,118 @@ router.route('/')
 
 
 
+##Lastly:
+
+full crud on your controller, looks like this:
+
+
+```javascript
+
+var User = require('../models/user.js');
+
+// POST / users
+function postUser (req, res){
+    var newUser = new User
+
+    console.log(req.body);
+    newUser.avatar_url  = req.body.avatar_url;
+    newUser.email = req.body.email;
+    newUser.firstName  = req.body.firstName;
+    newUser.lastName  = req.body.lastName;
+    newUser.save(function (error) {
+        if (error) console.log("Could not save resource because:" + error )
+    })
+    res.json({message: "successfully created", success: true})
+}
+
+// GET /users
+function getIndex (req, res){
+  User.find({}, function (error, users) {
+    if(error) console.log(error);
+    res.json(users)
+  })
+};
+
+//GET /users/:id
+function getUser (req, res){
+    var id = req.params.id;
+    User.findById({_id:id}, function (error, user) {
+        if(error) console.log(error);
+        res.json(user)
+    })
+};
+
+//DELETE / users/:id
+function deleteUser (req, res){
+  var id = req.params.id;
+
+  User.remove({_id: id}, function (error) {
+    if(error) console.log( "Resource has not been deleted due to the following error:" + error );
+    //res.redirect('/users');
+    res.json({message: "successfully deleted", success: true})
+  })
+};
+
+// PUT /resources/:id
+function putUser (req, res){
+  var id = req.params.id;
+
+  User.findById({ _id: id }, function (error, user){
+    if(error) console.log( "There is an error on this page because:" + error );
+    
+    if (req.body.avatar_url) user.avatar_url  = req.body.avatar_url;
+    if (req.body.email) user.local.email = req.body.email;
+    if (req.body.firstName) user.firstName  = req.body.firstName;
+    if (req.body.lastName) user.lastName  = req.body.lastName;
+
+
+    user.save( function (error){
+      if(error) console.log( "Could not save resource becuase:" + error );  
+      res.json({message: "successfully updated", success: true})
+    })
+  })
+};
+
+
+module.exports = {
+    postUser: postUser,
+    getIndex: getIndex,
+    deleteUser: deleteUser,
+    getUser: getUser,
+    putUser: putUser
+}
+
+```
+
+then your routes need to match:
+
+
+```javascript
+
+var express = require('express');
+var router = express.Router();
+var bodyParser = require('body-parser');
+
+
+
+var usersController = require('../controllers/users.js');
+
+router.route('/')
+    .post(usersController.postUser)
+    .get(usersController.getIndex)
+
+router.route('/:id')
+	.put(usersController.putUser)
+	.delete(usersController.deleteUser)
+    .get(usersController.getUser)
+
+module.exports = router
+
+```
+
+
+
+
 
 
 
