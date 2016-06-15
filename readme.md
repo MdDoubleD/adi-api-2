@@ -72,6 +72,59 @@ module.exports = {
 ```
 
 
+* go to mongolabs.com, 
+	* create a new DB, 
+	* give it a dbuser and dbpassword
+	* copy the DB URI
+	* store it as a variable in index.js and 
+	* connect mongoose to it. 
+
+
+```
+var mongoUri 		= "mongodb://test:test@ds015574.mlab.com:15574/api-test-node"
+
+mongoose.connect(mongoUri);
+
+```
+
+* configure body-parser and morgan logger 
+
+```
+
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
+```
+
+* mkdir routes
+* touch routes/userRoutes.js
+
+```javascript
+
+var express 	= require('express');
+var router 		= express.Router();
+var bodyParser = require('body-parser');
+var usersController = require('../controllers/users.js')
+
+console.log("user routes")
+
+router.route('/')
+	.get(usersController.getIndex)
+
+module.exports = router
+
+
+```
+
+
+
+
+
+
+
+
+
 
 
 
