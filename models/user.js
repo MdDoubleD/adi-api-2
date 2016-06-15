@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+//creates a blueprint for users
 var User = mongoose.Schema({
 	email: String,
 	firstName: String,

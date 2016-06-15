@@ -30,6 +30,24 @@ app.listen(process.env.PORT || port);
 
 ```
 
+* mkdir models
+* touch models/user.js
+
+```
+var mongoose = require('mongoose');
+
+var User = mongoose.Schema({
+    email: String,
+    firstName:String,
+    lastName: String,
+    avatar_url:String
+})
+
+
+module.exports = mongoose.model('User', User);
+
+```
+
 
 
 
