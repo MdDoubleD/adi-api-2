@@ -4,7 +4,7 @@
   "description": "* mkdir adi-api-2 * cd adi-api-2/ * touch readme.md * touch .gitignore -> add node_modules * touch index.js * open . * git init * git add -A * git commit -m \"initial\"",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
